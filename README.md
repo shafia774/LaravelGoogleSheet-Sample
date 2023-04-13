@@ -2,7 +2,7 @@
 
 A laravel project using google sheet 
 
-Current Version 1.0.2
+Current Version 1.0.3
 Laravel Version - 10
 
 ## New Features

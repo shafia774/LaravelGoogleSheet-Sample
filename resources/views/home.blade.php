@@ -72,10 +72,11 @@
                             <label for="value" class="col-md-4 col-form-label text-md-right">{{ __('Value') }}</label>
 
                             <div class="col-md-6">
-                               <select name="value" class="form-control" id="value">   
-                                        <option value="1">Select One</option>
-                                        <option value="2">Select Two</option>
-                                        <option value="3">Select three</option>
+                               <select name="value" class="form-control" required id="value">
+                                        <option disabled selected value="">Please Select a value</option>   
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">three</option>
                                </select>
                                 @error('value')
                                     <span class="invalid-feedback" role="alert">
@@ -116,7 +117,7 @@
             </div>
         </div>
     </div>
-    <div id ="result_alert" class="alert sticky-bottom fade show m-3" style="display:none;" role="alert">
+    <div  class="alert dismissible sticky-bottom fade show m-3" style="display:none;" role="alert">
     </div>
 </div>
 
@@ -124,10 +125,8 @@
 <script>
 
    
-
-    document.getElementById("Sampleform").onsubmit = function() {ajaxpost()};
-    
-    function ajaxpost(){
+    $('#Sampleform').on("submit",function(e) {
+        event.preventDefault()
         var name = document.getElementById("name").value;
         var email = document.getElementById("email").value;
         var number = document.getElementById("number").value;
@@ -156,24 +155,23 @@
                 success: function (response) {
                     if (response.message == "Success") {
                         // console.log(response);
-                        $('#result_alert').addClass('alert alert-success');
-                        $('#result_alert').append(
+                        $('.alert').addClass('alert alert-success');
+                        $('.alert').append(
                             "<h4 class='alert-heading'>" + response.message + "!</h4><p>you have successfully added the data to the sheets</p>"
                         ); 
-                        $('#result_alert').addClass('alert alert-success');
-                        $('#result_alert').show('medium');
+                        $(".alert").show('medium');
                         setTimeout(function(){
                             $(".alert").hide('medium');
                         }, 5000);
 
                     } else {
                         // console.log(response);
-                        $('#result_alert').addClass('alert alert-danger');
-                        $('#result_alert').append(
+                        $('.alert').addClass('alert alert-danger');
+                        $('.alert').append(
                             "<h4 class='alert-heading'>" + response.message +"!</h4>"
                         ); 
                         $.each(response.errors, function (key, err_value) {
-                            $('#result_alert').append('<li>' + err_value + '</li>');
+                            $('.alert').append('<li>' + err_value + '</li>');
                         });
                         $(".alert").show('medium');
                         setTimeout(function(){
@@ -184,7 +182,7 @@
             });
     
 
-    }
+    })
 
 </script>
 @endsection
