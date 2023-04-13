@@ -2,7 +2,7 @@
 
 A laravel project using google sheet 
 
-Current Version 1.0.0
+Current Version 1.0.1
 Laravel Version - 10
 
 ## New Features
@@ -33,9 +33,13 @@ https://console.cloud.google.com/apis/credentials)
 3. Configure .env
 
     GOOGLE_CLIENT_ID=enter_clinet_id
+    ## 
     GOOGLE_CLIENT_SECRET=enter_client_secret
+    ##
     GOOGLE_SERVICE_ENABLED=true
+    ##
     GOOGLE_SHEET_ID=the_id_of_the_google_sheet_file
+    ##
     GOOGLE_SUB_SHEET_NAME=the_name_of_sheet_created_inside_the_sheet_file
 
 4. Add Service Account
